@@ -50,7 +50,7 @@ export default function Page() {
   }, [room]);
 
   return (
-    <main data-lk-theme="default" className="h-full grid content-center bg-[var(--lk-bg)]">
+    <main data-lk-theme="default" className="h-full grid content-center bg-[var(--lk-bg)] text-inara-green-dark">
       <RoomContext.Provider value={room}>
         <div className="lk-room-container max-w-[1024px] w-[90vw] mx-auto max-h-[90vh]">
           <SimpleVoiceAssistant onConnectButtonClicked={onConnectButtonClicked} />
@@ -79,7 +79,7 @@ function SimpleVoiceAssistant(props: { onConnectButtonClicked: () => void }) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3, delay: 0.1 }}
-              className="uppercase px-4 py-2 bg-white text-black rounded-md"
+              className="uppercase px-4 py-2 bg-inara-green text-white rounded-md hover:bg-inara-green-dark transition-colors duration-300 font-medium"
               onClick={() => props.onConnectButtonClicked()}
             >
               Start a conversation
@@ -115,13 +115,13 @@ function AgentVisualizer() {
 
   if (videoTrack) {
     return (
-      <div className="h-[512px] w-[512px] rounded-lg overflow-hidden">
+      <div className="h-[512px] w-[512px] rounded-lg overflow-hidden border-4 border-inara-yellow shadow-lg">
         <VideoTrack trackRef={videoTrack} />
       </div>
     );
   }
   return (
-    <div className="h-[300px] w-full">
+    <div className="h-[300px] w-full bg-gradient-to-b from-inara-green-light/10 to-inara-yellow/10 rounded-lg p-4">
       <BarVisualizer
         state={agentState}
         barCount={5}
@@ -145,7 +145,7 @@ function ControlBar(props: { onConnectButtonClicked: () => void }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, top: "-10px" }}
             transition={{ duration: 1, ease: [0.09, 1.04, 0.245, 1.055] }}
-            className="uppercase absolute left-1/2 -translate-x-1/2 px-4 py-2 bg-white text-black rounded-md"
+            className="uppercase absolute left-1/2 -translate-x-1/2 px-4 py-2 bg-inara-green text-white rounded-md hover:bg-inara-green-dark transition-colors duration-300 font-medium"
             onClick={() => props.onConnectButtonClicked()}
           >
             Start a conversation

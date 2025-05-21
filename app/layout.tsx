@@ -9,7 +9,8 @@ const publicSans400 = Public_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Voice Assistant",
+  title: "iNara Voice Assistant",
+  description: "An intelligent voice assistant by iNara"
 };
 
 export default function RootLayout({
@@ -19,7 +20,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`h-full ${publicSans400.className}`}>
-      <body className="h-full">{children}</body>
+      <body className="h-full bg-gradient-to-b from-white to-gray-50">
+        <header className="py-4 px-6 bg-inara-green text-white shadow-md">
+          <h1 className="text-2xl font-bold">iNara</h1>
+        </header>
+        <main className="h-[calc(100%-4rem)]">{children}</main>
+      </body>
     </html>
   );
 }

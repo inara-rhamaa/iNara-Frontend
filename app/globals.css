@@ -5,10 +5,20 @@
 :root {
   --lk-va-bar-width: 72px;
   --lk-control-bar-height: unset;
+  --lk-bg: #f8f9fa;
+  --lk-primary: theme('colors.inara.green.DEFAULT');
+  --lk-secondary: theme('colors.inara.yellow.DEFAULT');
 }
 
+/* Base styling */
+body {
+  @apply bg-gray-50;
+}
+
+/* Agent visualizer styling */
 .agent-visualizer > .lk-audio-bar {
   width: 72px;
+  @apply bg-inara-yellow;
 }
 
 .lk-agent-control-bar {
@@ -16,5 +26,27 @@
 }
 
 .lk-disconnect-button {
-  @apply h-[36px] hover:bg-[#6b221a] hover:text-[white] bg-[#31100c] border-[#6b221a];
+  @apply h-[36px] hover:bg-inara-green-dark hover:text-white bg-inara-green border-inara-green-light text-white;
+}
+
+/* Button styling */
+button.primary-button {
+  @apply bg-inara-green text-white hover:bg-inara-green-dark transition-colors duration-200 font-medium;
+}
+
+button.secondary-button {
+  @apply bg-inara-yellow text-inara-green-dark hover:bg-inara-yellow-dark transition-colors duration-200 font-medium;
+}
+
+/* LiveKit component overrides */
+.lk-audio-visualizer {
+  @apply bg-inara-green-light;
+}
+
+.lk-button {
+  @apply bg-inara-green text-white hover:bg-inara-green-dark;
+}
+
+.lk-control-bar {
+  @apply bg-white border border-gray-200 shadow-sm;
 }
