@@ -17,6 +17,9 @@ import { Room, RoomEvent } from "livekit-client";
 import { useCallback, useEffect, useState } from "react";
 import type { ConnectionDetails } from "./api/connection-details/route";
 
+// Import the AdPanel component
+import AdPanel from "@/components/AdPanel";
+
 export default function Page() {
   const [room] = useState(new Room());
 
@@ -50,13 +53,23 @@ export default function Page() {
   }, [room]);
 
   return (
-    <main data-lk-theme="default" className="h-full grid content-center bg-[var(--lk-bg)] text-inara-green-dark">
-      <RoomContext.Provider value={room}>
-        <div className="lk-room-container max-w-[1024px] w-[90vw] mx-auto max-h-[90vh]">
-          <SimpleVoiceAssistant onConnectButtonClicked={onConnectButtonClicked} />
+    <div className="h-full flex">
+      {/* Left panel for static ads - 2/3 width */}
+      <div className="w-2/3 p-4 h-full">
+        <AdPanel />
+      </div>
+      
+      {/* Right panel for AI system - 1/3 width */}
+      <div className="w-1/3 p-4 h-full bg-white rounded-l-3xl shadow-lg">
+        <div data-lk-theme="default" className="h-full flex flex-col bg-[var(--lk-bg)] text-inara-green-dark rounded-xl overflow-hidden">
+          <RoomContext.Provider value={room}>
+            <div className="lk-room-container w-full h-full p-4">
+              <SimpleVoiceAssistant onConnectButtonClicked={onConnectButtonClicked} />
+            </div>
+          </RoomContext.Provider>
         </div>
-      </RoomContext.Provider>
-    </main>
+      </div>
+    </div>
   );
 }
 

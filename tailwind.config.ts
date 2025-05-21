@@ -19,6 +19,10 @@ const config: Config = {
             DEFAULT: '#FFCB2E', // Yellow from the logo
             light: '#FFD65A',   // Lighter variant
             dark: '#E5B41A'     // Darker variant
+          },
+          pastel: {
+            white: '#F9F7F7',   // Pastel white for background
+            light: '#FDFCFC'    // Lighter pastel white
           }
         }
       }
